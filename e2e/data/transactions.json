@@ -1,0 +1,43 @@
+{
+  "incomes": [
+    {
+      "name": "Test Salary",
+      "amount": 500000,
+      "amountType": "Neto",
+      "type": "unique",
+      "description": "One-time test income"
+    },
+    {
+      "name": "Test Rent Income",
+      "amount": 150000,
+      "amountType": "Neto",
+      "type": "recurrence",
+      "frequency": "Mensual",
+      "description": "Recurring test income"
+    }
+  ],
+  "expenses": [
+    {
+      "name": "Test Supermarket",
+      "amount": 45000,
+      "amountType": "Neto",
+      "type": "unique",
+      "description": "One-time test expense"
+    },
+    {
+      "name": "Test Netflix",
+      "amount": 8000,
+      "amountType": "Neto",
+      "type": "recurrence",
+      "frequency": "Mensual",
+      "description": "Recurring test expense"
+    }
+  ],
+  "savings": [
+    {
+      "name": "Test Emergency Fund",
+      "amount": 100000,
+      "description": "Test saving"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "validCategories": [
+    { "name": "Food Test" },
+    { "name": "Transport Test" },
+    { "name": "Entertainment Test" }
+  ],
+  "invalidCategories": [
+    {
+      "name": "AB",
+      "expectedError": "La categoría debe tener al menos 4 caracteres"
+    }
+  ]
+}

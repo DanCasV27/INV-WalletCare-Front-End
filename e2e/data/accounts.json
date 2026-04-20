@@ -1,0 +1,22 @@
+{
+  "validAccounts": [
+    {
+      "name": "Test Personal Account",
+      "description": "Personal account for automated testing",
+      "type": "Personal"
+    },
+    {
+      "name": "Test Shared Account",
+      "description": "Shared account for automated testing",
+      "type": "Compartida"
+    }
+  ],
+  "invalidAccounts": [
+    {
+      "name": "AB",
+      "description": "",
+      "type": "Personal",
+      "expectedError": "El nombre de la cuenta debe tener al menos 4 caracteres"
+    }
+  ]
+}

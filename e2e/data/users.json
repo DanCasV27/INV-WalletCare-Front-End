@@ -1,0 +1,31 @@
+{
+  "validUsers": [
+    {
+      "email": "castrodaniel612@gmail.com",
+      "password": "AmoAMari02!",
+      "name": "Test",
+      "lastname": "User",
+      "nickname": "testuser",
+      "role": "user"
+    }
+  ],
+  "adminUsers": [
+    {
+      "email": "admin@walletcare.com",
+      "password": "Admin123!",
+      "role": "admin"
+    }
+  ],
+  "invalidCredentials": [
+    {
+      "email": "noexiste@test.com",
+      "password": "wrongpass",
+      "expectedError": "Usuario o contraseña incorrectos"
+    },
+    {
+      "email": "invalid-email",
+      "password": "TestPass123!",
+      "expectedError": "El correo electrónico no es válido"
+    }
+  ]
+}
