@@ -1,0 +1,34 @@
+<nz-table #fixedTable [nzData]="userList" [nzSize]="'small'" [nzPageSize]="10" [nzScroll]="{ x: '0px' }">
+    <thead>
+        <tr>
+            <th nzLeft>Nombre</th>
+            <th nzColumnKey="email" [nzSortFn]="sortby.sortByEmail">Correo electrónico</th>
+            <th nzColumnKey="enabled" [nzSortFn]="sortby.sortByStatus">Estado</th>
+            <th nzColumnKey="nickname" [nzSortFn]="sortby.sortByNickname">NickName</th>
+            <th nzColumnKey="createdAt" [nzSortFn]="sortby.sortByDate">Fecha de Unión</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of fixedTable.data">
+            <td nzLeft>{{ data?.name + ' ' + data?.lastname }}</td>
+            <td>{{ data?.email }}</td>
+            <td>{{ setStatus(data.enabled) }}</td>
+            <td>{{ data.nickname }}</td>
+            <td>{{ getDate(data.createdAt) }}</td>
+            <td nzRight>
+
+                <nz-space>
+                    @if (!data.enabled) {
+                    <button nz-button nzType="primary" [nzSize]="'large'"
+                        (click)="this.changeUserStatus.emit(data)" [disabled]="setDisabled(data)"><span nz-icon nzType="check"></span></button>
+                    }@else{
+                    <button nz-button nzType="primary" [nzSize]="'large'" nzDanger
+                        (click)="this.changeUserStatus.emit(data)" [disabled]="setDisabled(data)"><span nz-icon nzType="close"></span></button>
+                    }
+                </nz-space>
+
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

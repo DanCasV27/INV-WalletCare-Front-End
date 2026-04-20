@@ -1,0 +1,10 @@
+<nz-page-header class="site-page-header">
+  <nz-page-header-title>Usuarios</nz-page-header-title>
+  <nz-page-header-extra>
+    <nz-space>
+    </nz-space>
+  </nz-page-header-extra>
+  <nz-page-header-content>
+    <app-user-list [userList]="this.usersService.users$()" (changeUserStatus)="changeUserStatus($event)" ></app-user-list>
+  </nz-page-header-content>
+</nz-page-header>

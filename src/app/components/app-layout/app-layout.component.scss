@@ -1,0 +1,39 @@
+.app-layout {
+  height: 100vh;
+}
+
+nz-breadcrumb {
+  margin: 10px 0;
+}
+
+.inner-layout {
+  padding: 0 15px 15px;
+}
+
+nz-content {
+  background: #fff;
+  min-height: 280px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.sider-menu {
+  height: 100%;
+  padding: 0 4px;
+}
+
+.ant-menu-item {
+  border-left: 2px solid white;
+}
+
+.ant-menu-item-selected {
+  border-left: 2px solid var(--ant-primary-color);
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: white;
+}
+
+.ant-menu-item::after {
+  border-right: white;
+}
