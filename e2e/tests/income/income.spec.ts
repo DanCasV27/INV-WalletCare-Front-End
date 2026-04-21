@@ -9,13 +9,6 @@ test.describe('Income: Create', () => {
   test.beforeEach(async ({ authenticatedPage }) => {
     incomePage = new IncomePage(authenticatedPage);
     await incomePage.navigate();
-    // Clean up any leftover data from a previous failed run
-    for (const income of transactionsData.incomes) {
-      const row = authenticatedPage.getByRole('row').filter({ hasText: income.name });
-      if (await row.isVisible({ timeout: 2000 }).catch(() => false)) {
-        await incomePage.deleteIncome(income.name);
-      }
-    }
   });
 
   test.afterEach(async () => {
@@ -32,24 +25,26 @@ test.describe('Income: Create', () => {
 
   test('Income: Create — unique income', async () => {
     const income = transactionsData.incomes[0];
-    createdIncomeName = income.name;
+    const uniqueName = `${income.name} ${Date.now()}`;
+    createdIncomeName = uniqueName;
 
-    await incomePage.createUniqueIncome(income.name, income.amount, income.amountType as 'Neto' | 'Bruto');
+    await incomePage.createUniqueIncome(uniqueName, income.amount, income.amountType as 'Neto' | 'Bruto');
 
-    await incomePage.expectIncomeVisible(income.name);
+    await incomePage.expectIncomeVisible(uniqueName);
   });
 
   test('Income: Create — recurring income', async () => {
     const income = transactionsData.incomes[1];
-    createdIncomeName = income.name;
+    const uniqueName = `${income.name} ${Date.now()}`;
+    createdIncomeName = uniqueName;
 
     await incomePage.createRecurringIncome(
-      income.name,
+      uniqueName,
       income.amount,
       income.frequency!,
       income.amountType as 'Neto' | 'Bruto'
     );
 
-    await incomePage.expectIncomeVisible(income.name);
+    await incomePage.expectIncomeVisible(uniqueName);
   });
 });

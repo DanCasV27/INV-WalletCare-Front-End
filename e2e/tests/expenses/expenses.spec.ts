@@ -9,13 +9,6 @@ test.describe('Expenses: Create', () => {
   test.beforeEach(async ({ authenticatedPage }) => {
     expensesPage = new ExpensesPage(authenticatedPage);
     await expensesPage.navigate();
-    // Clean up any leftover data from a previous failed run
-    for (const expense of transactionsData.expenses) {
-      const row = authenticatedPage.getByRole('row').filter({ hasText: expense.name });
-      if (await row.isVisible({ timeout: 2000 }).catch(() => false)) {
-        await expensesPage.deleteExpense(expense.name);
-      }
-    }
   });
 
   test.afterEach(async () => {
@@ -32,24 +25,26 @@ test.describe('Expenses: Create', () => {
 
   test('Expenses: Create — unique expense', async () => {
     const expense = transactionsData.expenses[0];
-    createdExpenseName = expense.name;
+    const uniqueName = `${expense.name} ${Date.now()}`;
+    createdExpenseName = uniqueName;
 
-    await expensesPage.createUniqueExpense(expense.name, expense.amount, expense.amountType as 'Neto' | 'Bruto');
+    await expensesPage.createUniqueExpense(uniqueName, expense.amount, expense.amountType as 'Neto' | 'Bruto');
 
-    await expensesPage.expectExpenseVisible(expense.name);
+    await expensesPage.expectExpenseVisible(uniqueName);
   });
 
   test('Expenses: Create — recurring expense', async () => {
     const expense = transactionsData.expenses[1];
-    createdExpenseName = expense.name;
+    const uniqueName = `${expense.name} ${Date.now()}`;
+    createdExpenseName = uniqueName;
 
     await expensesPage.createRecurringExpense(
-      expense.name,
+      uniqueName,
       expense.amount,
       expense.frequency!,
       expense.amountType as 'Neto' | 'Bruto'
     );
 
-    await expensesPage.expectExpenseVisible(expense.name);
+    await expensesPage.expectExpenseVisible(uniqueName);
   });
 });
