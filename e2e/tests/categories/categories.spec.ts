@@ -2,6 +2,8 @@ import { test, expect } from '../../fixtures/auth.fixture';
 import { CategoriesPage } from '../../pages/categories/CategoriesPage';
 import categoriesData from '../../data/categories.json';
 
+test.describe.configure({ mode: 'serial' });
+
 test.describe('Categories: CRUD', () => {
   let categoriesPage: CategoriesPage;
   let createdCategoryName: string | null = null;

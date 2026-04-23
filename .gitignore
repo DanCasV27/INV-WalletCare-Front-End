@@ -136,3 +136,12 @@ dist
 .idea
 
 package-lock.json
+
+# Playwright auth state (JWT guardado localmente)
+e2e/.auth/
+
+# Playwright & Allure report output
+playwright-report/
+test-results/
+allure-results/
+allure-report/
